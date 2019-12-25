@@ -1,0 +1,19 @@
+//=============================
+// compiling process
+//=============================
+
+HEADER_SEARCH_PATHS = $(SRCROOT)/../ $(SRCROOT)/../cocos $(SRCROOT)/../cocos/platform $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../extensions $(SRCROOT)/../external $(SRCROOT)/../external/chipmunk/include $(SRCROOT)/../external/tinyxml2 $(SRCROOT)/../external/xxhash $(SRCROOT)/../external/xxtea $(SRCROOT)/../external/clipper $(SRCROOT)/../external/edtaa3func $(SRCROOT)/../external/ConvertUTF $(SRCROOT)/../external/poly2tri $(SRCROOT)/../external/md5 $(SRCROOT)/../external/unzip
+
+SYSTEM_HEADER_SEARCH_PATHS = $(SRCROOT)/../external/Box2D/include $(SRCROOT)/../external/chipmunk/include $(SRCROOT)/../external/freetype2/include/ios/freetype2 $(SRCROOT)/../external/bullet/include $(SRCROOT)/../external/bullet/include/bullet $(SRCROOT)/../external/jpeg/include/ios $(SRCROOT)/../external/openssl/include/ios $(SRCROOT)/../external/uv/include $(SRCROOT)/../external/webp/include/ios $(SRCROOT)/../external/websockets/include/ios $(SRCROOT)/../external/curl/include/ios $(SRCROOT)/../external/png/include/ios $(SRCROOT)/../external/glsl-optimizer/include
+
+GCC_PREPROCESSOR_DEFINITIONS[config=Debug] = USE_FILE32API __APPLE__ "CC_ENABLE_CHIPMUNK_INTEGRATION=1" "COCOS2D_DEBUG=1"
+GCC_PREPROCESSOR_DEFINITIONS[config=Release] = USE_FILE32API __APPLE__ "CC_ENABLE_CHIPMUNK_INTEGRATION=1"
+
+CLANG_ENABLE_OBJC_ARC = NO
+ENABLE_BITCODE = NO
+
+//=============================
+// linking process
+//=============================
+
+LIBRARY_SEARCH_PATHS = $(SRCROOT)/../external/chipmunk/prebuilt/ios $(SRCROOT)/../external/png/prebuilt/ios $(SRCROOT)/../external/jpeg/prebuilt/ios  $(SRCROOT)/../external/webp/prebuilt/ios $(SRCROOT)/../external/freetype2/prebuilt/ios $(SRCROOT)/../external/curl/prebuilt/ios $(SRCROOT)/../external/websockets/prebuilt/ios $(SRCROOT)/../external/chipmunk/prebuilt/ios $(SRCROOT)/../external/openssl/prebuilt/ios $(SRCROOT)/../external/bullet/prebuilt/ios $(SRCROOT)/../external/Box2D/prebuilt/ios $(SRCROOT)/../external/uv/prebuilt/ios $(SRCROOT)/../external/glsl-optimizer/prebuilt/ios

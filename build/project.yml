@@ -1,0 +1,121 @@
+name: cocos2d_libs
+targets:
+  cocos2d iOS:
+    type: library.static
+    platform: iOS
+    deploymentTarget: "10.0"
+    sources: 
+      - path: ../cocos
+        excludes:
+          - "**/android/**"
+          - "**/*android*"
+          - "**/Mac/**"
+          - "**/*mac*"
+          - "**/win32/**"
+          - "**/linux/**"
+          - "**/desktop/**"
+          - "**/*desktop*"
+          - "renderer/backend/opengl/*"
+          - editor-support/spine
+          # uncomment below if you don't need cocostudio
+          # - editor-support/cocostudio
+        includes: ["**/*.{h,hpp,c,cc,cpp,mm}"]
+      - path: ../cocos/renderer/shaders
+        type: file
+      # comment out 2 lines below if you don't need extensions
+      - path: ../extensions
+        includes: ["**/*.{h,hpp,c,cc,cpp,mm}"]
+      - "cocos2d_libs.xcconfig"
+    dependencies:
+      - target: recast
+        link: true
+      - target: tinyxml2
+        link: true
+      - target: xxhash
+        link: true
+      - target: xxtea
+        link: true
+      - target: clipper
+        link: true
+      - target: edtaa3func
+        link: true
+      - target: ConvertUTF
+        link: true
+      - target: poly2tri
+        link: true
+      - target: md5
+        link: true
+      - target: unzip
+        link: true
+      - framework: ../external/uv/prebuilt/ios/libuv_a.a
+        link: true
+      - framework: ../external/Box2D/prebuilt/ios/libbox2d.a
+        link: true
+      - framework: ../external/bullet/prebuilt/ios/libBulletCollision.a
+        link: true
+      - framework: ../external/bullet/prebuilt/ios/libBulletDynamics.a
+        link: true
+      - framework: ../external/bullet/prebuilt/ios/libBulletMultiThreaded.a
+        link: true
+      - framework: ../external/bullet/prebuilt/ios/libLinearMath.a
+        link: true
+      - framework: ../external/bullet/prebuilt/ios/libMiniCL.a
+        link: true
+      - framework: ../external/openssl/prebuilt/ios/libcrypto.a
+        link: true
+      - framework: ../external/openssl/prebuilt/ios/libssl.a
+        link: true
+      - framework: ../external/websockets/prebuilt/ios/libwebsockets.a
+        link: true
+      - framework: ../external/png/prebuilt/ios/libpng.a
+        link: true
+      - framework: ../external/jpeg/prebuilt/ios/libjpeg.a
+        link: true
+      - framework: ../external/chipmunk/prebuilt/ios/libchipmunk.a
+        link: true
+      - framework: ../external/webp/prebuilt/ios/libwebp.a
+        link: true
+      - framework: ../external/freetype2/prebuilt/ios/libfreetype.a
+        link: true
+      - framework: ../external/glsl-optimizer/prebuilt/ios/libglsl_optimizer.a
+        link: true
+      - framework: ../external/glsl-optimizer/prebuilt/ios/libmesa.a
+        link: true
+      - framework: ../external/glsl-optimizer/prebuilt/ios/libglcpp-library.a
+        link: true
+    configFiles:
+      Debug: cocos2d_libs.xcconfig
+      Release: cocos2d_libs.xcconfig
+    settings:
+      CLANG_WARN_DOCUMENTATION_COMMENTS: false
+      GCC_WARN_ABOUT_RETURN_TYPE: false
+  recast:
+    templates: [external]
+  tinyxml2:
+    templates: [external]
+  xxhash:
+    templates: [external]
+  xxtea:
+    templates: [external]
+  clipper:
+    templates: [external]
+  edtaa3func:
+    templates: [external]
+  ConvertUTF:
+    templates: [external]
+  poly2tri:
+    templates: [external]
+  md5:
+    templates: [external]
+  unzip:
+    templates: [external]
+targetTemplates:
+  external:
+    platform: iOS
+    type: library.static
+    sources:
+      - path: ../external/${target_name}
+        group: external
+        includes: ["**/*.{h,hpp,c,cc,cpp}"]
+    settings:
+      HEADER_SEARCH_PATHS: $(SRCROOT)/../external
